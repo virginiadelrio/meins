@@ -1,0 +1,33 @@
+.contributor {
+    color: @textColor;
+    text-decoration: none;
+        
+    &:hover {
+        .contributor__name {
+            color: @red300;
+        }
+    }
+    
+    &__image {
+        height: 8rem;
+
+        @media @screenLg {
+            height: 16rem;
+        }
+    }
+
+    &__name {
+        text-align: center;
+        font-family: 'GothamCondensedMedium', sans-serif;
+        font-size: 0.9rem;
+        color: white;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+        
+        @media @screenLg {
+            font-size: 1.3rem;
+            letter-spacing: 0.1rem;
+            white-space: normal;
+        }
+    }
+}

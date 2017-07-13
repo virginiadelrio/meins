@@ -1,0 +1,229 @@
+.title {
+    position: relative;
+    
+    @media @screenMd {
+        height: 300px;
+    }
+    
+    @media @screenLg {
+        height: 270px;
+    }
+    
+    @media @screenXl {
+        height: 300px;
+    }
+
+    &__library {
+        position: absolute;
+        top: -10rem;
+        left: 0;
+        right: 0;
+        height: 10rem;
+
+        overflow: auto;
+        
+        z-index: 50;
+
+        background-color: @grey300;
+
+        @media @screenMd {
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 300px;
+        }
+
+        @media @screenLg {
+            left: 360px;
+            width: 450px;
+            height: 270px;
+        }
+        
+        @media @screenXl {
+            left: 400px;
+            width: 500px;
+            height: 300px;
+        }
+    }
+
+    &__text {
+        transition: transform 0.4s, margin-top 0.4s, background-color 0.4s;
+        
+        position: relative;
+        margin-top: 0;
+        padding: 2rem 1.5rem;
+        
+        z-index: 51;
+            
+        background-color: @red300;
+        color: white;
+        
+        font-family: 'GothamLight', sans-serif;
+        
+        @media @screenMd {
+            position: absolute;
+            
+            top: 0;
+            left: 0;
+            width: 50%;
+            min-height: 300px;
+            
+            z-index: 99;
+        }
+        
+        @media @screenLg {
+            left: 360px;
+            width: 450px;
+            padding: 3.2rem 1.6rem;
+            margin-top: -@headerHeight;
+            min-height: 310px;
+
+            font-size: 0.9rem;
+            
+            z-index: 101;
+        }
+        
+        @media @screenXl {
+            left: 400px;
+            width: 500px;
+            padding: 4rem 2rem;
+            min-height: 340px;
+            
+            font-size: 1rem;
+        }
+    }
+
+    &__main-text {
+        font-size: 2rem;
+        line-height: 2rem;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+
+        @media @screenLg {
+            font-size: 2.7rem;
+            line-height: 2.7rem;
+            margin-bottom: 1.8rem;
+        }
+        
+        @media @screenXl {
+            font-size: 3rem;
+            line-height: 3rem;
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__subtitle {
+        padding-left: 2rem;
+
+        font-family: 'GothamMedium', sans-serif;
+        font-size: 0.9rem;
+        
+        @media @screenLg {
+            font-family: 'GothamBook', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        @media @screenXl {
+            font-size: 1.3rem;
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        bottom: -@spacing3;
+        right: @spacing2;
+        
+        width: 2rem;
+        height: 3rem;
+        
+        @media @screenLg {
+            right: @spacing3;
+            
+            width: 2.25rem;
+            height: 3.15rem;
+        }
+        
+        @media @screenXl {
+            right: @spacing3;
+            
+            width: 2.5rem;
+            height: 3.5rem;
+        }
+    }
+}
+
+.title__left-tile {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    width: 360px;
+    height: 270px;
+    
+    @media @screenXl {
+        width: 400px;
+        height: 300px;
+    }
+    
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.title__right-tiles {
+    position: absolute;
+
+    display: flex;
+    align-items: stretch;
+
+    top: 0;
+    right: 0;
+    left: 810px;
+    height: 270px;
+    
+    @media @screenMd {
+        left: 50%;
+        height: 300px;
+    }
+    
+    @media @screenLg {
+        left: 810px;
+        height: 270px;
+    }
+    
+    @media @screenXl {
+        left: 900px;
+        height: 300px;
+    }
+}
+
+.title__right-tile {
+    flex-grow: 1;
+    
+    height: 100%;
+    
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.title--is-library-open {
+    .title__text {
+        margin-top: 10rem;
+
+        @media @screenMd {
+            transform: translateY(300px);
+            margin-top: 0;
+            
+            background-color: fadeOut(@red300, 50%);
+        }
+        
+        @media @screenLg {
+            transform: translateY(270px);
+        }
+        
+        @media @screenXl {
+            transform: translateY(300px);
+        }
+    }
+}

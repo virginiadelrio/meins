@@ -1,0 +1,234 @@
+.arrow {
+    transition: 0.4s;
+
+    svg {
+        fill: @red300;
+    }
+    
+    .bar {
+        float: left;
+        
+        &.bar1 {
+            background-color: @red300;
+        }
+        &.bar2 {
+            background-color: @red300;
+        }
+        &.bar3 {
+            background-color: @petrol200;
+        }
+        &.bar4 {
+            background-color: @petrol200;
+        }
+    }
+
+    &.arrow--right, &.arrow--left {
+        .bar {
+            height: 100%;
+
+            &.bar1 {
+                width: 27%;
+            }
+            &.bar2 {
+                width: 15%;
+            }
+            &.bar3 {
+                width: 10%;
+            }
+            &.bar4 {
+                width: 5%;
+            }
+        }
+        
+        svg {
+            height: 100%;
+            width: 20%;
+        }
+    }
+
+    &.arrow--right {
+        .bar {
+            &.bar1 {
+                margin-right: 4%;
+            }
+            &.bar2 {
+                margin-right: 6%;
+            }
+            &.bar3 {
+                margin-right: 4%;
+            }
+            &.bar4 {
+                margin-right: 9%;
+            }
+        }
+    }
+
+    &.arrow--left {
+        .bar {
+            &.bar1 {
+                margin-left: 4%;
+            }
+            &.bar2 {
+                margin-left: 6%;
+            }
+            &.bar3 {
+                margin-left: 4%;
+            }
+            &.bar4 {
+                margin-left: 9%;
+            }
+        }
+        
+        svg {
+            float: left;
+        }
+    }
+    
+    &.arrow--down {
+        .bar {
+            width: 100%;
+
+            &.bar1 {
+                height: 20%;
+                margin-bottom: 5%;
+                .scrollDown(scrollDown1);
+            }
+            &.bar2 {
+                height: 20%;
+                margin-bottom: 5%;
+                .scrollDown(scrollDown2);
+            }
+            &.bar3 {
+                height: 10%;
+                margin-bottom: 5%;
+                .scrollDown(scrollDown3);
+            }
+            &.bar4 {
+                height: 5%;
+                margin-bottom: 5%;
+                .scrollDown(scrollDown4);
+            }
+        }
+        
+        svg {
+            width: 100%;
+            height: 20%;
+            vertical-align: top;
+            
+            fill: @red300;
+            
+            .scrollDown(scrollDown5);
+        }
+    }
+
+    &.arrow--white {
+        svg {
+            fill: white;
+        }
+        
+        .bar {
+            &.bar1, &.bar2, &.bar3, &.bar4 {
+                background-color: white;
+            }
+        }
+    }
+
+    &.arrow--library {
+        height: 100%;
+        
+        svg {
+            fill: @petrol300;
+        }
+        
+        .bar {
+            &.bar1 {
+                height: 15%;
+                
+                transform-origin: 0 100%;
+                transform: rotate(-20deg);
+                
+                background-color: white;
+            }
+            &.bar2 {
+                height: 15%;
+                
+                background-color: white;
+            }
+            &.bar3 {
+                background-color: white;
+            }
+            &.bar4 {
+                margin-bottom: 10%;
+                
+                background-color: white;
+            }
+        }
+    }
+}
+
+@keyframes scrollDown1 {
+    0% {
+        background-color: @red300;
+    }
+    5% {
+        background-color: white;
+    }
+}
+
+@keyframes scrollDown2 {
+    0% {
+        background-color: white;
+    }
+    5% {
+        background-color: @red300;
+    }
+    10% {
+        background-color: white;
+    }
+}
+
+@keyframes scrollDown3 {
+    0% {
+        background-color: white;
+    }
+    10% {
+        background-color: @red300;
+    }
+    15% {
+        background-color: white;
+    }
+}
+
+@keyframes scrollDown4 {
+    0% {
+        background-color: white;
+    }
+    15% {
+        background-color: @red300;
+    }
+    20% {
+        background-color: white;
+    }
+}
+
+@keyframes scrollDown5 {
+    0% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(3px);
+    }
+    25% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.scrollDown(@which) {
+    animation-name: @which;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    // animation-timing-function: steps(1, end);
+}

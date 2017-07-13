@@ -1,0 +1,100 @@
+.text-content {
+    padding: 0 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    
+    @media @screenMd {
+        width: @rowMd;
+    }
+    
+    @media @screenLg {
+        padding: 0 @spacing5;
+        width: @rowLg;
+    }
+    
+    &__paragraph {
+        font-size: 0.95rem;
+        line-height: 1.3rem;
+
+        @media @screenLg {
+            font-size: 1.05rem;
+            line-height: 1.7rem;
+        }
+    }
+
+    &__link {
+        color: @petrol200;
+        text-decoration: underline;
+    }
+}
+
+// .facebook-content {
+//     padding: 0 1.5rem;
+//     margin-left: auto;
+//     margin-right: auto;
+
+//     @media @screenMd {
+//         padding: 0;
+//         width: 100%;
+//     }
+// }
+
+.text-content--with-inline:extend(.text-content) {
+    &:before {
+        content: '';
+
+        width: 0;
+        float: left;
+    }
+}
+
+.inline-offset-0:before {height: 0;}
+.inline-offset-1:before {height: 1rem;}
+.inline-offset-2:before {height: 2rem;}
+.inline-offset-3:before {height: 3rem;}
+.inline-offset-4:before {height: 4rem;}
+.inline-offset-5:before {height: 5rem;}
+.inline-offset-6:before {height: 6rem;}
+.inline-offset-7:before {height: 7rem;}
+.inline-offset-8:before {height: 8rem;}
+.inline-offset-9:before {height: 9rem;}
+.inline-offset-10:before {height: 10rem;}
+.inline-offset-11:before {height: 11rem;}
+.inline-offset-12:before {height: 12rem;}
+.inline-offset-13:before {height: 13rem;}
+
+.content-header {
+    font-family: 'GothamCondensedMedium', sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+
+    &__text {
+        font-size: 2rem;
+        font-weight: normal;
+        letter-spacing: 0.5px;
+        color: @textHighlightColor;
+
+        @media @screenLg {
+            font-size: 3rem;
+        }
+    }
+    
+    &__author, &__author--alt {
+        font-size: 1em;
+        color: @red300;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 1px;
+
+        @media @screenLg {
+            font-size: 1.25em;
+        }
+    }
+
+    &__author--alt {
+        color: @petrol200;
+    }
+}

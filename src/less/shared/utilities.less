@@ -1,0 +1,192 @@
+.u-line-height-1 {
+    line-height: 1em;
+}
+
+.u-text-indent-2 {
+    text-indent: 2rem;
+}
+
+.u-overflow-hidden {
+    overflow: hidden;
+}
+
+.u-clearfix:before,
+.u-clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.u-clearfix:after {
+    clear: both;
+}
+
+.u-clearfix {
+    *zoom: 1;
+}
+
+.u-16-9 {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.mb0 {
+    margin-bottom: 0;
+}
+
+.mb1 {
+    margin-bottom: @spacing1;
+}
+
+// responsive margins
+.rmb1 {
+    margin-bottom: @spacing1;
+
+    @media @screenLg {
+        margin-bottom: @spacing2;
+    }
+}
+
+.rmb2 {
+    margin-bottom: @spacing2;
+
+    @media @screenLg {
+        margin-bottom: @spacing3;
+    }
+}
+
+.rmb3 {
+    margin-bottom: @spacing3;
+
+    @media @screenLg {
+        margin-bottom: @spacing4;
+    }
+}
+
+.rmb4 {
+    margin-bottom: @spacing4;
+
+    @media @screenLg {
+        margin-bottom: @spacing5;
+    }
+}
+
+.mt0 {
+    margin-top: 0;
+}
+
+.mt1 {
+    margin-top: @spacing1;
+}
+
+// responsive margins
+.rmt1 {
+    margin-top: @spacing1;
+
+    @media @screenLg {
+        margin-top: @spacing2;
+    }
+}
+
+.rmt2 {
+    margin-top: @spacing2;
+
+    @media @screenLg {
+        margin-top: @spacing3;
+    }
+}
+
+.rmt3 {
+    margin-top: @spacing3;
+
+    @media @screenLg {
+        margin-top: @spacing4;
+    }
+}
+
+.rmt4 {
+    margin-top: @spacing4;
+
+    @media @screenLg {
+        margin-top: @spacing5;
+    }
+}
+
+.rmy1:extend(.rmb1, .rmt1) {}
+.rmy2:extend(.rmb2, .rmt2) {}
+.rmy3:extend(.rmb3, .rmt3) {}
+.rmy4:extend(.rmb4, .rmt4) {}
+
+.height-100 {
+    height: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+
+    & > {
+        // fix IE11 wrong default; TODO check how others reset this properly
+        flex: 0 1 auto;
+    }
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
+}
+
+.reset-link {
+    text-decoration: none;
+    color: currentColor;
+}
+
+.reset-list {
+    list-style: none;
+}

@@ -1,0 +1,4 @@
+each tile in tiles
+  - var tileStyle = {left: tile.left+'%', top: tile.top+'%', width: tile.width+'%'}
+  a.pinboard__tile.animate-scroll(href=tile.href, class=tile.className, style=tileStyle)
+    img.width-100(src=`assets/_ext/49/${tile.img}.jpg`)

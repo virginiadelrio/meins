@@ -1,0 +1,82 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    z-index: 100;
+    
+    background-color: black;
+    height: @headerHeight;
+
+    &__logo {
+        background-image: url(../img/meins-logo.png);
+        background-repeat: no-repeat;
+        background-color: @petrol300;
+        background-position: center center;
+        background-size: cover;
+
+        float: left;
+        
+        height: @meinsHeight;
+        width: @meinsWidth;
+
+        margin-top: 0.3rem;
+    }
+
+    &__tagline {
+        float: left;
+        margin: 0.4rem 0 0 @spacing1;
+        
+        font-family: 'GothamCondensedMedium', sans-serif;
+        font-weight: bold;
+        font-size: @headerHeight - 0.6rem;
+        line-height: 1em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        
+        color: white;
+    }
+
+    &__share {
+        float: right;
+
+        .icons {
+            fill: white;
+
+            height: @headerHeight*2/3;
+            width: @headerHeight*2/3;
+
+            margin: @headerHeight*1/6 @spacing1 0 0;
+        }
+
+        .social-link:hover {
+            .icons--fb {
+                fill: @facebookBlue;
+            }
+            
+            .icons--twitter {
+                fill: @twitterBlue;
+            }
+        }
+        
+    }
+    
+    &__progress {
+        position: absolute;
+        bottom: -1px;
+        height: 2px;
+        left: 0;
+        width: 0;
+        
+        // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAABCAYAAAAW/mTzAAAAGElEQVQIW2O8rKH0n4GBgUH3xj1GEA0CADsKBAIXolvTAAAAAElFTkSuQmCC) repeat;
+        background-color: @red300;
+        box-shadow: 0 1px 2px 0 @red300;
+        
+        border-top-right-radius: 1px;
+        border-bottom-right-radius: 1px;
+    }
+}

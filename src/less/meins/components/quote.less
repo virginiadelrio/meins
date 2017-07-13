@@ -1,0 +1,397 @@
+// TODO
+// - quote__body-aside => end quote should be at bottom and it can possibly break into next line!
+
+.quote {
+
+    &__body-main {
+        position: relative;
+
+        &:before {
+            // content: '\201d';
+            content: '\00bb';
+            
+            position: absolute;
+        }
+        
+        &:after {
+            // content: '\201c';
+            content: '\00ab';
+
+            position: absolute;
+        }
+    }
+    
+    &__body-aside {
+        margin-top: 1rem;
+
+        line-height: 1.2em;
+
+        @media @screenLg {
+            margin-top: 1rem;
+
+            line-height: 1.7em;
+        }
+    }
+    
+    &__source {
+        background-color: @grey200;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+
+        @media @screenLg {
+            border-top-left-radius: 1rem;
+            border-top-right-radius: 1rem;
+        }
+    }
+
+    &__source-text {
+        background-color: @petrol200;
+        color: white;
+    }
+    
+    &__source-name {
+        font-family: 'GothamCondensedMedium', sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 1rem;
+        letter-spacing: 0.7px;
+        white-space: nowrap;
+        
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+
+        @media @screenLg {
+            font-size: 1.4rem;
+        }
+    }
+    
+    &__source-info {
+        font-size: 0.5rem;
+        
+        @media @screenMd {
+            font-size: 0.8rem;
+            white-space: nowrap;
+        }
+        
+        @media @screenLg {
+            white-space: normal;
+        }
+    }
+
+    &--break {
+        position: relative;
+        margin-bottom: 3rem;
+        padding-right: 7rem;
+        
+        border: 1px solid @grey200;
+        border-top-right-radius: 0.5rem;
+
+        @media @screenLg {
+            padding-right: 13rem;
+            
+            border-top-right-radius: 1rem;
+        }
+        
+        .quote__body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem 1.7rem 1rem 1.5rem;
+            min-height: 7rem;
+
+            color: @petrol200;
+
+            @media @screenLg {
+                padding: 2rem 4rem 2rem 7rem;
+                min-height: 13rem;
+            }
+        }
+
+        .quote__body-main {
+            font-family: 'GothamBold', sans-serif;
+            font-size: 1rem;
+            line-height: 1.2rem;
+            
+            &:before {
+                top: -0.05rem;
+                left: -0.7rem;
+                
+                font-family: 'GothamBold', sans-serif;
+                font-size: 1rem;
+            }
+
+            &:after {
+                bottom: 0.05rem;
+                margin-left: 0.2rem;
+                
+                font-family: 'GothamBold', sans-serif;
+                font-size: 1rem;
+            }
+
+            @media @screenLg {
+                font-size: 2rem;
+                line-height: 2.5rem;
+                
+                &:before {
+                    top: 0;
+                    left: -1.3rem;
+                    
+                    font-size: 2rem;
+                }
+
+                &:after {
+                    bottom: 0.2rem;
+                    margin-left: 0.3rem;
+                    
+                    font-size: 2rem;
+                }
+            }
+
+            &--more-text {
+                font-size: 0.7rem;
+                line-height: 0.9rem;
+                
+                @media @screenMd {
+                    font-size: 1rem;
+                    line-height: 1.3rem;
+                }
+
+                @media @screenLg {
+                    font-size: 1.3rem;
+                    line-height: 1.8rem;
+                    
+                    &:before {
+                        top: -0.15rem;
+                        left: -1.4rem;
+                    }
+                }
+            }
+        }
+
+        .quote__body-aside {
+            font-family: 'GothamBook', sans-serif;
+        }
+
+        .quote__source {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 7rem;
+            height: 7rem;
+
+            &:after {
+                content: '';
+
+                position: absolute;
+
+                top: 3.3rem;
+                left: -1.5rem;
+                
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0.4rem 1.5rem 0.4rem 0;
+                border-color: transparent @grey200 transparent transparent;
+            }
+
+            @media @screenLg {
+                width: 13rem;
+                height: 13rem;
+
+                &:after {
+                    top: 6rem;
+                    left: -2.5rem;
+                    
+                    border-width: 0.7rem 2.5rem 0.7rem 0;
+                }
+            }
+        }
+        
+        .quote__source-text {
+            display: inline-block;
+            position: absolute;
+            
+            padding: 0.2rem 1rem;
+            z-index: 1;
+            right: -0.5rem;
+            top: 6.5rem;
+            
+            background-color: @petrol200;
+            color: white;
+
+            @media @screenLg {
+                padding: 0.5rem 2rem;
+                top: 12rem;
+                
+                white-space: nowrap;
+            }
+        }
+
+        .quote__source-name {
+            display: inline-block;
+            margin-right: 0.4rem;
+        }
+
+        .quote__source-info {
+            display: inline-block;
+            
+            font-size: 0.8rem;
+            vertical-align: top;
+            white-space: nowrap;
+
+            @media @screenLg {
+                vertical-align: inherit;
+            }
+        }
+
+        .quote__source-image {
+            width: 100%;
+        }
+    }
+
+    &--inline {
+        position: relative;
+        min-height: 8.5rem;
+        
+        background-color: inherit;
+
+        @media @screenLg {
+            float: left;
+            clear: left;
+            width: 32rem;
+            margin-left: -11rem;
+            margin-right: 1.5rem;
+            min-height: auto;
+        }
+        
+        .quote__source {
+            position: absolute;
+            top: 0.5rem;
+            left: -1rem;
+
+            @media @screenLg {
+                top: 1rem;
+                left: 0;
+            }
+            
+            &:after {
+                content: '';
+                
+                position: absolute;
+                top: 2.5rem;
+                right: -1rem;
+                width: 0;
+                height: 0;
+                
+                border-style: solid;
+                border-width: 0.3rem 0 0.3rem 1rem;
+                border-color: transparent transparent transparent @grey200;
+
+                @media @screenLg {
+                    top: 4rem;
+                    right: -1.5rem;
+                    
+                    border-width: 0.5rem 0 0.5rem 1.5rem;
+                }
+            }
+        }
+
+        .quote__source-image {
+            position: relative;
+            
+            width: 6rem;
+            height: 6rem;
+
+            @media @screenLg {
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+        
+        .quote__source-text {
+            position: absolute;
+            padding: 0.5rem;
+            z-index: 1;
+            left: 0;
+            top: 5rem;
+            min-width: 7rem;
+
+            @media @screenLg {
+                padding: 0.5rem 1rem 0.5rem 2rem;
+                left: inherit;
+                right: 0;
+                left: -5rem;
+                top: 9rem;
+            }
+        }
+
+        .quote__source-name {
+            font-size: 0.8rem;
+
+            @media @screenMd {
+                font-size: inherit;
+            }
+        }
+
+        .quote__body {
+            padding: 1rem 1rem 1rem 6rem;
+            margin-left: 1rem;
+            border: 1px solid @grey200;
+
+            @media @screenLg {
+                padding: 1rem 1rem 1rem 7rem;
+                margin-left: 6rem;
+            }
+        }
+
+        .quote__body-main {
+            font-family: 'GothamBold', sans-serif;
+            font-size: 1rem;
+            line-height: 1.3rem;
+            color: @petrol200;
+
+            &:before {
+                top: -0.05rem;
+                left: -1rem;
+
+                font-size: 1rem;
+            }
+
+            &:after {
+                bottom: 0rem;
+                margin-left: 0.2rem;
+                
+                font-size: 1rem;
+            }
+
+            @media @screenLg {
+                font-size: 1.25rem;
+                line-height: 1.3em;
+
+                &:before {
+                    top: -0.05rem;
+                    left: -1rem;
+
+                    font-size: 1.25rem;
+                }
+
+                &:after {
+                    bottom: 0rem;
+                    margin-left: 0.2rem;
+                    
+                    font-size: 1.25rem;
+                }
+            }
+        }
+
+        .quote__body-aside {
+            font-family: 'GothamMedium', sans-serif;
+            font-size: 0.9rem;
+            
+            @media @screenLg {
+                font-size: inherit;
+            }
+        }
+        
+    }
+}

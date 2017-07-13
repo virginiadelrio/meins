@@ -1,0 +1,35 @@
+.editorial {
+    &__contributors {
+        position: relative;
+        width: 100%;
+        height: 8rem;
+        
+        text-align: center;
+
+        @media @screenLg {
+            width: @rowLg;
+            height: 16rem;
+        }
+    }
+
+    &__contributor {
+        display: inline-block;
+        width: 4rem;
+        vertical-align: top;
+        
+        @media @screenLg {
+            width: 12rem;
+        }
+    }
+    
+    &__infos {
+        height: @spacing4;
+        
+        background-color: @grey400;
+        text-align: center;
+
+        @media @screenLg {
+            height: @spacing5;
+        }
+    }
+}

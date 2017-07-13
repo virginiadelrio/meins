@@ -1,0 +1,29 @@
+.footer {
+    display: flex;
+    align-items: center;
+    
+    height: 2rem;
+    
+    background-color: black;
+
+    &__link {
+        padding: 0.2rem 0.1rem;
+        
+        color: white;
+        text-decoration: none;
+
+        font-size: 0.8rem;
+
+        &:before {
+            content: '|';
+            display: inline-block;
+            margin: 0 0.3rem;
+        }
+        
+        &:first-of-type {
+            &:before {
+                content: '';
+            }
+        }
+    }
+}

@@ -1,0 +1,1 @@
+- Use a logger with timestamps instead of console.log

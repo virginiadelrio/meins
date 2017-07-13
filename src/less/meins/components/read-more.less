@@ -1,0 +1,36 @@
+.read-more {
+    &--quote {
+        @media @screenLg {
+            position: absolute;
+            bottom: -0.5rem;
+            right: -5rem;
+            height: 2.5rem;
+        }
+    }
+    
+    &__link {
+        float: left;
+        text-decoration: none;
+    }
+
+    &__text {
+        display: inline-block;
+        margin: 0.75rem 0 0 0.2rem;
+        float: left;
+        
+        color: @red300;
+        
+        font-family: 'GothamCondensedMedium', sans-serif;
+
+        @media @screenLg {
+            float: right;
+        }
+    }
+    
+    &__arrow {
+        display: inline-block;
+        height: 2.5rem;
+        width: 3rem;
+        float: left;
+    }
+}

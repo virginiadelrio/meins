@@ -1,0 +1,213 @@
+.slideshow {
+    position: relative;
+    overflow: hidden;
+    min-height: 8rem;
+    
+    background-color: @grey300;
+
+    @media @screenMd {
+        min-height: 12rem;
+    }
+    
+    @media @screenLg {
+        min-height: 30rem;
+    }
+    
+    &__main {
+        position: relative;
+        width: 100%;
+        max-height: 100%;
+    }
+
+    &__slide {
+        width: 100%;
+    }
+    
+    &__slide-image {
+        width: 100%;
+    }
+    
+    &__fullscreen {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 0.2rem;
+
+        cursor: pointer;
+
+        background-color: fadeOut(@red300, 50%);
+
+        &:hover {
+            background-color: @red300;
+        }
+
+        @media @screenMd {
+            width: 3rem;
+            height: 3rem;
+            padding: 0.3rem;
+        }
+        
+        svg {
+            height: 100%;
+            width: 100%;
+            
+            fill: white;
+        }
+    }
+
+    &__close {
+        display: none;
+    }
+
+    &__go-left, &__go-right {
+        position: absolute;
+        top: 0;
+        width: 2.5rem;
+        cursor: pointer;
+        
+        background-color: none;
+        text-align: center;
+
+        &:hover {
+            background-color: fadeOut(@grey300, 50%);
+
+            svg {
+                fill: @red300;
+            }
+        }
+        
+        &:before {
+            content: '';
+            display: inline-block;
+            height: 100%;
+            vertical-align: middle;
+        }
+        
+        @media @screenMd {
+            width: 3rem;
+        }
+        
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+            width: 1rem;
+            height: 3rem;
+            fill: white;
+            
+            @media @screenMd {
+                width: 1.2rem;
+                height: 6rem;
+            }
+        }
+    }
+
+    &__go-left {
+        left: 0;
+        bottom: 0;
+    }
+
+    &__go-right {
+        right: 0;
+        padding-top: 2.5rem;
+        bottom: 2.5rem;
+
+        @media @screenLg {
+            padding-top: 3rem;
+            bottom: 3rem;
+        }
+    }
+
+}
+
+.slideshow:not(.slideshow--fullscreen):hover {
+    .slideshow__go-left, .slideshow__go-right {
+        background-color: fadeOut(@grey300, 50%);
+        
+        svg {
+            fill: red;
+        }
+    }
+    
+    .slideshow__fullscreen {
+        background-color: @red300;
+    }
+}
+
+.slideshow--fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+    
+    background-color: black;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .slideshow__go-left, .slideshow__go-right {
+        @media @screenMobile {
+            display: none !important;
+        }
+    }
+    
+    .slideshow__go-right {
+        @media @screenMd {
+            top: 3rem;
+            bottom: 0;
+            padding-top: 0;
+            padding-bottom: 3rem;
+        }
+    }
+
+    .slideshow__fullscreen {
+        display: none;
+    }
+    
+    .slideshow__slide-image {
+        max-height: 100%;
+        max-height: 100vh;
+        width: auto;
+        max-width: 100%;
+        margin: 0 auto;
+
+        @media screen and (orientation:portrait) {
+            height: auto;
+            width: 100%;
+        }
+    }
+    
+    .slideshow__close {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+
+        cursor: pointer;
+        
+        font-size: 2rem;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+
+        &:hover {
+            background-color: fadeOut(@grey300, 50%);
+            color: @red300;
+        }
+
+        @media @screenMd {
+            width: 3rem;
+            height: 3rem;
+            line-height: 3rem;
+            
+            font-size: 2.5rem;
+        }
+    }
+}

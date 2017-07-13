@@ -1,0 +1,49 @@
+.chartjs {
+    margin: @spacing2 0;
+
+    @media @screenMd {
+        margin: @spacing3 0;
+    }
+    
+    &__controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 1rem 0;
+    }
+
+    &__text {
+        padding: 0 1rem;
+    }
+
+    &__button {
+        flex-grow: 0;
+        flex-shrink: 0;
+        
+        width: 1rem;
+        height: 2rem;
+        padding: 0 0.1rem;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            fill: @grey300;
+
+            &:hover {
+                fill: @red300;
+            }
+        }
+    }
+
+    canvas {
+        max-height: 12rem;
+
+        @media @screenMd {
+            max-height: 18rem;
+        }
+        
+        @media @screenLg {
+            max-height: auto;
+        }
+    }
+}

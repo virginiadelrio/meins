@@ -1,0 +1,192 @@
+@import "./shared/settings";
+@import "./shared/tools";
+@import "./shared/normalize"; // generic
+@import "./shared/responsive";
+@import "./shared/fonts";
+@import "./shared/utilities";
+@import "./shared/burger-menu";
+
+@import "./wahl17/colors";
+
+// TODO put into shared reset
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    font-family: 'GothamBook', sans-serif;
+    color: @textColor;
+}
+
+a {
+    cursor: pointer;
+}
+
+b, strong {
+    font-family: 'GothamMedium', sans-serif;
+}
+
+.postings {
+    &--desktop {
+        width: 80rem;
+        margin: 0 auto;
+    }
+    
+    &--mobile {
+        max-width: 40rem;
+        margin: 0 auto;
+    }
+
+    &__column {
+        width: 50%;
+        padding: 2rem;
+    }
+}
+
+.posting {
+    margin-bottom: 4rem;
+    padding-bottom: 1rem;
+    
+    overflow: hidden;
+
+    text-align: center;
+
+    &--Bild, &--Video {
+        border: 1px solid;
+        border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+        border-radius: 3px;
+    }
+
+    &__title {
+        padding: 0 2rem;
+        margin: 2rem 0 1rem;
+        
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        font-family: 'GothamBold', sans-serif;
+    }
+
+    &__first-paragraph, &__text {
+        padding: 0 2rem;
+    }
+
+    &__more {
+        color: #707070;
+
+        &:hover {
+            color: #404040;
+            text-decoration: underline;
+        }
+    }
+
+    &__inline-link {
+        color: @petrol200;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+.party {
+    flex: 1 0 auto;
+    height: 5px;
+}
+
+.inline-facebook {
+    margin: 3rem 2rem;
+}
+
+.header {
+    margin-top: 2rem;
+
+    text-align: center;
+    
+    &__filter {
+        display: inline-block;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+        
+        user-select: none;
+    }
+}
+
+.topic-menu {
+    margin: 4rem auto 3rem;
+    padding: 1rem;
+    max-width: 40rem;
+    
+    font-family: 'GothamMedium', sans-serif;
+    color: #666;
+    font-size: 2rem;
+
+    @media @screenLg {
+        padding: 1rem 0;
+        max-width: 80rem - 4rem;
+    }
+
+    &.is-active {
+        .topic-menu__items {
+            display: block;
+        }
+    }
+
+    &__topic {
+        cursor: pointer;
+        
+        font-size: 1rem;
+    }
+
+    &__items {
+        display: none;
+        z-index: 10;
+        
+        top: 2rem;
+        left: 0;
+        width: 100%;
+        padding: 0 0 2rem;
+
+        background: white;
+        border-bottom: 5px solid currentColor;
+    }
+
+    &__item {
+        padding: 3px 0;
+
+        &:hover {
+            background-color: #eee;
+        }
+    }
+}
+
+.tags {
+    &__tag {
+        display: inline-block;
+        padding: 0.3rem 0.4rem;
+        margin-right: 0.5rem;
+        
+        background-color: #999;
+        border-radius:3px;
+
+        font-size: 0.7rem;
+        font-family: 'GothamMedium', sans-serif;
+        text-decoration: none;
+    }
+}
+
+.wahl-logo {
+    font-family: 'GothamBold', sans-serif;
+    font-size: 2rem;
+    line-height: 2rem;
+    
+    &__light {
+        font-family: 'GothamLight', sans-serif;
+    }
+}
+
+.orf-eins-logo {
+    height: 2rem;
+}

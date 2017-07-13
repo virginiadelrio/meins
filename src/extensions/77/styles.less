@@ -1,0 +1,63 @@
+.usa-vs-china {
+    z-index: 1000;
+    
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.2s;
+
+    background-color: white;
+
+    @media screen and (min-width: 80em) {
+        padding: 20px;
+    }
+
+    &.show {
+        transform: translateY(0);
+    }
+
+    &__round {
+        margin: 0 0 10px;
+        padding: 0;
+        
+        text-align: center;
+        font-size: 30px;
+        font-family: 'GothamBold', sans-serif;
+        font-weight: 700;
+        
+        @media screen and (min-width: 80em) {
+            font-size: 50px;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        img {
+            height: 60px;
+            
+            @media screen and (min-width: 80em) {
+                height: 70px;
+            }
+        }
+    }
+}
+
+.score {
+    margin: 0 20px;
+    padding: 0;
+    
+    font-size: 30px;
+    font-family: 'GothamBold', sans-serif;
+    font-weight: 700;
+    
+    @media screen and (min-width: 80em) {
+        margin: 0 10px;
+        font-size: 40px;
+    }
+}

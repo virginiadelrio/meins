@@ -1,0 +1,25 @@
+.side-page-title {
+    display: flex;
+    
+    height: 300px;
+    
+    &__tile {
+        display: inline-block;
+    
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+
+        flex-grow: 1;
+        
+        &:nth-child(1) {
+            width: 400px;
+            flex-grow: 0;
+        }
+        
+        &:nth-child(2) {
+            width: 500px;
+            flex-grow: 0;
+        }
+    }
+}
