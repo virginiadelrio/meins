@@ -57,7 +57,8 @@ const builder = mm2000
                         type: 'Wahl17',
                         props: {
                             posts: posts,
-                            highlightedPost: post
+                            highlightedPost: post,
+                            selectedTopic: 'Alle Themen'
                         }
                     };
                 });

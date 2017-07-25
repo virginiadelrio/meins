@@ -4,7 +4,9 @@ const marked = require('marked');
 const cheerio = require('cheerio');
 const _ = require('lodash');
 const slug = require('slug');
+
 const partyToClass = require('../../utils/party-to-class');
+const Icon = require('../Meins/Icon.jsx');
 
 class Posting extends React.Component {
     renderMarkdown(html) {
@@ -105,6 +107,42 @@ class Posting extends React.Component {
         return <div className="tags">{tagComponents}</div>;
     }
 
+    renderShare() {
+        const shareUrl = encodeURIComponent(
+            'http://meins.orf.at/wahl17/posts/' + this.props.id + '/'
+        );
+        const fbShareUrl =
+            'http://www.facebook.com/sharer/sharer.php?u=' + shareUrl;
+        const twitterShareUrl =
+            'http://twitter.com/intent/tweet?source=' +
+            shareUrl +
+            '&text=' +
+            shareUrl;
+
+        return (
+            <div className="flex align-center justify-end share-buttons">
+                <a className="share-button" href={fbShareUrl} _target="blank">
+                    <Icon
+                        title="Facebook"
+                        className="icons icons--fb"
+                        href="#facebook"
+                    />
+                </a>
+                <a
+                    className="share-button"
+                    href={twitterShareUrl}
+                    _target="blank"
+                >
+                    <Icon
+                        title="Twitter"
+                        className="icons icons--twitter"
+                        href="#twitter"
+                    />
+                </a>
+            </div>
+        );
+    }
+
     renderImage() {
         const { type, title, image, parties = [] } = this.props;
 
@@ -128,6 +166,7 @@ class Posting extends React.Component {
                 <div className="posting__title">{title}</div>
                 {this.renderTags()}
                 {this.renderText()}
+                {this.renderShare()}
             </div>
         );
     }
@@ -164,6 +203,7 @@ class Posting extends React.Component {
                 <div className="posting__title">{title}</div>
                 {this.renderTags()}
                 {this.renderText()}
+                {this.renderShare()}
             </div>
         );
     }

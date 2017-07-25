@@ -132,10 +132,22 @@ class App extends React.Component {
         );
     }
 
+    renderPost(p) {
+        const [pageId, postId] = p.id.split('_');
+        const width = window.innerWidth <= 640 ? 290 : 574;
+
+        return (
+            <div
+                className={`fb-post ${watchlist[p.fb_page]}`}
+                data-href={`https://www.facebook.com/${pageId}/posts/${postId}/`}
+                data-width={width}
+                data-show-text="true"
+            />
+        );
+    }
+
     renderPosts() {
         const { skip, matches: posts } = this.state;
-
-        const width = window.innerWidth <= 640 ? 290 : 574;
 
         if (posts == null || posts.length === 0) {
             return null;
@@ -158,26 +170,30 @@ class App extends React.Component {
             }
         }
 
-        return (
-            <div className="posts">
-                {[left, right].map(column =>
-                    <div className="post-column">
-                        {map(p => {
-                            const [pageId, postId] = p.id.split('_');
+        const desktopPostings = [left, right].map(column =>
+            <div className="post-column">
+                {map(p => this.renderPost(p), column)}
+            </div>
+        );
 
-                            return (
-                                <div
-                                    className={`fb-post ${watchlist[
-                                        p.fb_page
-                                    ]}`}
-                                    data-href={`https://www.facebook.com/${pageId}/posts/${postId}/`}
-                                    data-width={width}
-                                    data-show-text="true"
-                                />
-                            );
-                        }, column)}
+        const mobilePostings = (
+            <div className="post-column">
+                {visiblePosts.map(p => this.renderPost(p))}
+            </div>
+        );
+
+        return (
+            <div>
+                <div className="hide-lt-lg">
+                    <div className="posts">
+                        {desktopPostings}
                     </div>
-                )}
+                </div>
+                <div className="show-lt-lg">
+                    <div className="posts">
+                        {mobilePostings}
+                    </div>
+                </div>
             </div>
         );
     }

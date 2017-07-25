@@ -132,7 +132,8 @@ b, strong {
 }
 
 .topic-menu {
-    margin: 4rem auto 3rem;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1rem;
     max-width: 40rem;
     
@@ -212,8 +213,29 @@ b, strong {
 .top-header {
     max-width: 76rem;
     margin: 1rem auto 0;
+    padding: 0 1rem;
+    
+    @media @screenLg {
+        padding: 0;
+    }
 }
 
 .orf-eins-logo {
     height: 1.3rem;
+}
+
+.share-button {
+    margin-right: 1rem;
+
+    &:hover {
+        svg {
+            fill: black;
+        }
+    }
+    
+    svg {
+        height: 1rem;
+        width: 1rem;
+        fill: #666;
+    }
 }

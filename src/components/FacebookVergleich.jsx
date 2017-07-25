@@ -68,6 +68,17 @@ module.exports = ({ url }) => {
             </head>
 
             <body>
+                <header className="flex space-between align-center top-header">
+                    <img
+                        className="orf-eins-logo"
+                        src="http://meins.orf.at/img/orf-eins.png"
+                        alt="ORFeins"
+                    />
+                    <a className="wahl-logo" href="wahl17">
+                        <span className="wahl-logo__wahl">Wahl</span>
+                        <span className="wahl-logo__17">17</span>
+                    </a>
+                </header>
                 <div id="fb-root" />
 
                 <script dangerouslySetInnerHTML={{ __html: fbSdk }} />
