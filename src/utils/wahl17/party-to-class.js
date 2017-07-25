@@ -3,6 +3,5 @@ module.exports = {
     ÖVP: 'oevp',
     FPÖ: 'fpoe',
     NEOS: 'neos',
-    'Die Grünen': 'gruene',
-    'Team Stronach': 'stronach'
+    'Die Grünen': 'gruene'
 };

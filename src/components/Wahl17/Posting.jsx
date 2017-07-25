@@ -5,7 +5,7 @@ const cheerio = require('cheerio');
 const _ = require('lodash');
 const slug = require('slug');
 
-const partyToClass = require('../../utils/party-to-class');
+const partyToClass = require('../../utils/wahl17/party-to-class');
 const Icon = require('../Meins/Icon.jsx');
 
 class Posting extends React.Component {

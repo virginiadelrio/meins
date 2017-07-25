@@ -4,6 +4,8 @@ const _ = require('lodash');
 const Posting = require('./Wahl17/Posting.jsx');
 const TopicMenu = require('./Wahl17/TopicMenu.jsx');
 
+const partyToClass = require('../utils/wahl17/party-to-class');
+
 const fbSdk = `
       window.fbAsyncInit = function() {
         FB.init({
@@ -200,7 +202,16 @@ module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
                         <span className="wahl-logo__17">17</span>
                     </a>
                 </header>
-                <div id="header" />
+                <div className="flex align-center justify-center tags top-header">
+                    {_.map(partyToClass, (v, k) =>
+                        <a
+                            className="tags__tag fg-white"
+                            href={`wahl17/tags/${v}/`}
+                        >
+                            {k}
+                        </a>
+                    )}
+                </div>
                 <TopicMenu items={items} selectedTopic={selectedTopic} />
 
                 {desktopPostings}

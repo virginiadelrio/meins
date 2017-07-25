@@ -13,7 +13,7 @@ class TopicMenu extends React.Component {
         const { items, selectedTopic, onClick } = this.props;
 
         const outerClassname = classnames(
-            'flex space-between align-end rmt3 relative topic-menu',
+            'flex space-between align-end relative topic-menu',
             {
                 'is-active': this.state.active
             }

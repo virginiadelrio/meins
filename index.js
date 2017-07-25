@@ -18,7 +18,7 @@ const fixPaths = require('./src/middleware/fix-paths');
 const extensions = require('./src/middleware/extensions');
 const oewa = require('./src/middleware/oewa');
 
-const partyToClass = require('./src/utils/party-to-class');
+const partyToClass = require('./src/utils/wahl17/party-to-class');
 // middleware: (tree, context) => tree
 
 const builder = mm2000
