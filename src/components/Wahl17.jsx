@@ -1,5 +1,5 @@
 const React = require('react');
-const fp = require('lodash/fp');
+const _ = require('lodash');
 
 const Posting = require('./Wahl17/Posting.jsx');
 const TopicMenu = require('./Wahl17/TopicMenu.jsx');
@@ -23,22 +23,27 @@ const fbSdk = `
 `;
 
 module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
-    const renderedPostings = fp.flow(
-        fp.sortBy(p => {
-            if (p.sortDate) {
-                return -new Date(p.sortDate);
-            }
-            return -new Date(p.sys.createdAt);
-        }),
-        fp.map(({ sys, fields }) =>
-            <Posting
-                key={sys.id}
-                id={sys.id}
-                {...fields}
-                image={fields.image ? fields.image.fields : null}
-            />
-        )
-    )(posts);
+    let sortedPosts = _.sortBy(posts, p => {
+        if (p.sortDate) {
+            return -new Date(p.sortDate);
+        }
+        return -new Date(p.sys.createdAt);
+    });
+
+    if (highlightedPost) {
+        sortedPosts = [highlightedPost].concat(
+            _.without(sortedPosts, highlightedPost)
+        );
+    }
+
+    const renderedPostings = sortedPosts.map(({ sys, fields }) =>
+        <Posting
+            key={sys.id}
+            id={sys.id}
+            {...fields}
+            image={fields.image ? fields.image.fields : null}
+        />
+    );
 
     const left = [],
         right = [];
@@ -75,23 +80,23 @@ module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
           />
         : null;
 
-    const highlightedModal = highlightedPost
-        ? <div className="modal">
-              <button className="modal__close">&times;</button>
-              <div className="model__body">
-                  <Posting
-                      key={highlightedPost.sys.id}
-                      {...highlightedPost.fields}
-                      image={
-                          highlightedPost.fields.image
-                              ? highlightedPost.fields.image.fields
-                              : null
-                      }
-                  />
-              </div>
-          </div>
-        : null;
-
+    /* const highlightedModal = highlightedPost
+     *     ? <div className="modal">
+     *           <button className="modal__close">&times;</button>
+     *           <div className="model__body">
+     *               <Posting
+     *                   key={highlightedPost.sys.id}
+     *                   {...highlightedPost.fields}
+     *                   image={
+     *                       highlightedPost.fields.image
+     *                           ? highlightedPost.fields.image.fields
+     *                           : null
+     *                   }
+     *               />
+     *           </div>
+     *       </div>
+     *     : null;
+     */
     const allItems = [
         { text: 'Alle Themen', href: 'wahl17/' },
         { text: 'Asyl', href: 'wahl17/tags/asyl/' },
@@ -110,6 +115,20 @@ module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
 
     const items = allItems.filter(({ text }) => text !== selectedTopic);
 
+    const sharing = highlightedPost
+        ? {
+              title: 'Wahl17 - ' + highlightedPost.fields.title,
+              description: highlightedPost.fields.title,
+              image: highlightedPost.fields.image
+                  ? highlightedPost.fields.image.fields.file.url
+                  : 'http://meins.orf.at/img/orf-eins.png'
+          }
+        : {
+              title: 'Wahl17',
+
+              image: 'http://meins.orf.at/img/orf-eins.png'
+          };
+
     return (
         <html>
             <head>
@@ -125,17 +144,19 @@ module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
                     property="og:url"
                     content={`http://meins.orf.at/${url}`}
                 />
-                <meta property="og:title" content="Wahl 17" />
-                <meta property="og:description" content="Wahl 17" />
-                <meta property="og:site_name" content="Hundert Tage Wahl" />
-                {/* <meta property="og:image" content={fullShareImagePath} /> */}
+                <meta property="og:title" content={sharing.title} />
+                <meta property="og:description" content={sharing.description} />
+                <meta property="og:site_name" content="Wahl17" />
+                <meta property="og:image" content={sharing.image} />
 
-                {/* <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:title" content={title} />
-                    <meta name="twitter:site" content="@orfeins" />
-                    <meta name="twitter:description" content={description} />
-                    <meta name="twitter:image" content={fullShareImagePath} />
-                  */}
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={sharing.title} />
+                <meta name="twitter:site" content="@orfeins" />
+                <meta
+                    name="twitter:description"
+                    content={sharing.description}
+                />
+                <meta name="twitter:image" content={sharing.image} />
                 <title>Wahl 17</title>
 
                 <link
@@ -155,6 +176,17 @@ module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
             </head>
 
             <body>
+                <header className="flex space-between align-center top-header">
+                    <img
+                        className="orf-eins-logo"
+                        src="http://meins.orf.at/img/orf-eins.png"
+                        alt="ORFeins"
+                    />
+                    <a className="wahl-logo" href="wahl17">
+                        <span className="wahl-logo__wahl">Wahl</span>
+                        <span className="wahl-logo__17">17</span>
+                    </a>
+                </header>
                 <div id="header" />
                 <TopicMenu items={items} selectedTopic={selectedTopic} />
 
@@ -165,8 +197,8 @@ module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
 
                 <div id="fb-root" />
                 <script dangerouslySetInnerHTML={{ __html: fbSdk }} />
-                {resetUrlScript}
-                {highlightedModal}
+                {/* {resetUrlScript} */}
+                {/* {highlightedModal} */}
 
             </body>
 

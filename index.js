@@ -18,6 +18,7 @@ const fixPaths = require('./src/middleware/fix-paths');
 const extensions = require('./src/middleware/extensions');
 const oewa = require('./src/middleware/oewa');
 
+const partyToClass = require('./src/utils/party-to-class');
 // middleware: (tree, context) => tree
 
 const builder = mm2000
@@ -40,7 +41,8 @@ const builder = mm2000
                 posts.forEach(post => {
                     const allTags = _.union(
                         post.fields.tags,
-                        post.fields.freeTags
+                        post.fields.freeTags,
+                        (post.fields.parties || []).map(p => partyToClass[p])
                     );
                     allTags.forEach(tag => {
                         postsByTag[tag] = postsByTag[tag] || [];
@@ -54,7 +56,7 @@ const builder = mm2000
                         url,
                         type: 'Wahl17',
                         props: {
-                            posts,
+                            posts: posts,
                             highlightedPost: post
                         }
                     };

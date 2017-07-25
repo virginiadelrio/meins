@@ -4,15 +4,7 @@ const marked = require('marked');
 const cheerio = require('cheerio');
 const _ = require('lodash');
 const slug = require('slug');
-
-const partyToClass = {
-    SPÖ: 'spoe',
-    ÖVP: 'oevp',
-    FPÖ: 'fpoe',
-    NEOS: 'neos',
-    'Die Grünen': 'gruene',
-    'Team Stronach': 'stronach'
-};
+const partyToClass = require('../../utils/party-to-class');
 
 class Posting extends React.Component {
     renderMarkdown(html) {
@@ -177,7 +169,7 @@ class Posting extends React.Component {
     }
 
     renderFacebook() {
-        const { type, sourceUrl, parties = [] } = this.props;
+        const { type, sourceUrl, text, parties = [] } = this.props;
         const $ = cheerio.load(sourceUrl);
         const embedSrc = $('iframe').attr('src');
 
@@ -186,6 +178,15 @@ class Posting extends React.Component {
         }
 
         const { query } = url.parse(embedSrc, true);
+
+        const textComponent = text
+            ? <div
+                  className="posting__text show-lt-lg"
+                  dangerouslySetInnerHTML={{
+                      __html: this.renderMarkdown(text)
+                  }}
+              />
+            : null;
 
         return (
             <div
@@ -198,6 +199,7 @@ class Posting extends React.Component {
                     data-width="auto"
                     data-show-text="true"
                 />
+                {textComponent}
             </div>
         );
     }

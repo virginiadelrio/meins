@@ -113,6 +113,10 @@ module.exports = props => {
         },
 
         BlockFacebook(node, id) {
+            if (node.EmbedCode == null) {
+                return null;
+            }
+
             const $ = cheerio.load(node.EmbedCode);
             const { query } = url.parse($('iframe').attr('src'), true);
 

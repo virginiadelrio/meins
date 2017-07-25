@@ -648,7 +648,7 @@ const styles = {
         position: 'absolute',
         left: '0',
         width: '100%',
-        bottom: '2rem',
+        bottom: '2.5rem',
 
         '& span': {
             display: 'block',
