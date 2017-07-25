@@ -4,7 +4,7 @@ const ReactDOM = require('react-dom');
 const forEach = require('lodash/forEach');
 const every = require('lodash/every');
 
-const Header = require('./wahl17/Header.jsx');
+const PartyFilter = require('./wahl17/PartyFilter.jsx');
 const mountVideo = require('./shared/mount-video');
 
 $(document).ready(() => {
@@ -40,11 +40,11 @@ $(document).ready(() => {
         neos: true
     };
 
-    function handleHeaderFilterChange(id) {
+    function handlePartyFilterChange(id) {
         if (id === 'all') {
             forEach(headerFilter, (value, key) => (headerFilter[key] = true));
 
-            return renderHeader();
+            return renderPartyFilter();
         }
 
         if (every(headerFilter, v => v)) {
@@ -53,7 +53,7 @@ $(document).ready(() => {
             });
             headerFilter[id] = !headerFilter[id];
 
-            return renderHeader();
+            return renderPartyFilter();
         }
 
         headerFilter[id] = !headerFilter[id];
@@ -63,20 +63,20 @@ $(document).ready(() => {
             });
         }
 
-        return renderHeader();
+        return renderPartyFilter();
     }
 
-    const renderHeader = () => {
+    const renderPartyFilter = () => {
         ReactDOM.render(
-            React.createElement(Header, {
+            React.createElement(PartyFilter, {
                 filter: headerFilter,
-                onFilterChange: handleHeaderFilterChange
+                onFilterChange: handlePartyFilterChange
             }),
             document.getElementById('header')
         );
     };
 
-    // renderHeader();
+    // renderPartyFilter();
 
     $('.burger-menu, .topic-menu__title').click(function() {
         $('.burger-menu').toggleClass('open');

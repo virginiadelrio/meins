@@ -18,6 +18,7 @@ import classnames from 'classnames';
 import axios from 'axios';
 
 import TopicMenu from '../components/Wahl17/TopicMenu.jsx';
+import PartyFilter from './wahl17/PartyFilter.jsx';
 
 const PAGE_SIZE = 15;
 /* const URL = '/postings/posting/_search';*/
@@ -118,14 +119,14 @@ class App extends React.Component {
 
         return (
             <div className="fbc-container">
+                <PartyFilter
+                    filter={{ spoe: true, fpoe: true, gruene: false }}
+                />
                 <TopicMenu
                     selectedTopic={this.queries[query].caption}
                     items={queryItems}
                     onClick={this.handleSelect.bind(this)}
                 />
-                <div className="fbc-header">
-                    {this.renderControls()}
-                </div>
                 {this.renderPosts()}
                 {this.renderFooter()}
             </div>

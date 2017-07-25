@@ -14,7 +14,7 @@ module.exports = ({ filter, onFilterChange }) => {
 
     const partyFilter = parties.map(({ id, caption }) => {
         const className =
-            'header__filter ' +
+            'parties__filter ' +
             (!all && filter[id] ? `fg-white bg-${id}` : `fg-${id}`);
 
         return (
@@ -29,20 +29,20 @@ module.exports = ({ filter, onFilterChange }) => {
     });
 
     return (
-        <header className="header">
+        <div className="parties">
             <div>
                 {partyFilter}
                 <a
                     className={
                         all
-                            ? 'header__filter bg-text fg-white'
-                            : 'header__filter'
+                            ? 'parties__filter bg-text fg-white'
+                            : 'parties__filter'
                     }
                     onClick={() => onFilterChange('all')}
                 >
                     Alle
                 </a>
             </div>
-        </header>
+        </div>
     );
 };
