@@ -121,7 +121,7 @@ class Posting extends React.Component {
 
         return (
             <div className="flex align-center justify-end share-buttons">
-                <a className="share-button" href={fbShareUrl} _target="blank">
+                <a className="share-button" href={fbShareUrl} target="_blank">
                     <Icon
                         title="Facebook"
                         className="icons icons--fb"
@@ -131,7 +131,7 @@ class Posting extends React.Component {
                 <a
                     className="share-button"
                     href={twitterShareUrl}
-                    _target="blank"
+                    target="_blank"
                 >
                     <Icon
                         title="Twitter"
