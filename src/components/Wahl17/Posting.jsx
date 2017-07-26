@@ -19,19 +19,23 @@ class Posting extends React.Component {
         iframes.each((index, iframe) => {
             if (iframe.attribs.src.match(/facebook/)) {
                 const { query } = url.parse(iframe.attribs.src, true);
-                $(iframe).replaceWith(
-                    `<div class="inline-facebook">
-                         <div
-                             class="fb-video hide-lt-lg"
-                             data-href="${query.href}"
-                             data-width="auto"
-                             data-show-text="true"
-                         />
-                         <div class="desktop-only-warning show-lt-lg">
-                             Dieser Inhalt ist nur in der Desktop Variante verfügbar.
-                         </div>
+
+                const $el = $('<div></div>');
+                $el.append(`<div class="inline-facebook hide-lt-lg">
+                                <div
+                                    class="fb-video"
+                                    data-href="${query.href}"
+                                    data-width="auto"
+                                    data-show-text="true"
+                                />
+                            </div>`);
+
+                $el.append(
+                    `<div class="desktop-only-warning show-lt-lg">
+                        Dieser Inhalt ist nur in der Desktop Variante verfügbar.
                     </div>`
                 );
+                $(iframe).replaceWith($el);
             }
         });
 
@@ -154,7 +158,8 @@ class Posting extends React.Component {
                   <img
                       className="width-100 block posting__image"
                       src={image.file.url + '?w=640'}
-                      alt={image.description}
+                      alt={image.title}
+                      title={image.description}
                   />
                   {this.renderParties()}
               </div>

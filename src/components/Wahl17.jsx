@@ -26,8 +26,8 @@ const fbSdk = `
 
 module.exports = ({ url, posts, highlightedPost, selectedTopic }) => {
     let sortedPosts = _.sortBy(posts, p => {
-        if (p.sortDate) {
-            return -new Date(p.sortDate);
+        if (p.fields.sortDate) {
+            return -new Date(p.fields.sortDate);
         }
         return -new Date(p.sys.createdAt);
     });
