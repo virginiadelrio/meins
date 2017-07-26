@@ -49,7 +49,10 @@ class TopicMenu extends React.Component {
                             : null;
 
                         return (
-                            <li className="text-center topic-menu__item">
+                            <li
+                                key={item.text}
+                                className="text-center topic-menu__item"
+                            >
                                 <a
                                     className="reset-link topic-menu__link"
                                     href={item.href}

@@ -14,6 +14,10 @@ import drop from 'lodash/fp/drop';
 import sortBy from 'lodash/fp/sortBy';
 import flow from 'lodash/fp/flow';
 
+// not fp
+import every from 'lodash/every';
+import forEach from 'lodash/forEach';
+
 import classnames from 'classnames';
 import axios from 'axios';
 
@@ -104,12 +108,48 @@ class App extends React.Component {
             matches: [],
             skip: 0,
             query: 'fluechtlinge',
-            mobileSelected: 'gruene'
+            mobileSelected: 'gruene',
+            parties: {
+                spoe: true,
+                fpoe: true,
+                oevp: true,
+                gruene: true,
+                neos: true
+            }
         };
     }
 
+    handlePartyFilterChange(id) {
+        const { parties } = this.state;
+
+        if (id === 'all') {
+            forEach(parties, (value, key) => (parties[key] = true));
+
+            this.setState({ parties });
+            return;
+        }
+
+        if (every(parties, v => v)) {
+            forEach(parties, (value, key) => {
+                parties[key] = false;
+            });
+            parties[id] = !parties[id];
+
+            this.setState({ parties });
+            return;
+        }
+
+        parties[id] = !parties[id];
+        if (every(parties, v => !v)) {
+            forEach(parties, (value, key) => {
+                parties[key] = true;
+            });
+        }
+        this.setState({ parties });
+    }
+
     render() {
-        const { query } = this.state;
+        const { query, parties } = this.state;
 
         const queryItems = flow(
             toPairs,
@@ -120,7 +160,8 @@ class App extends React.Component {
         return (
             <div className="fbc-container">
                 <PartyFilter
-                    filter={{ spoe: true, fpoe: true, gruene: false }}
+                    filter={parties}
+                    onFilterChange={id => this.handlePartyFilterChange(id)}
                 />
                 <TopicMenu
                     selectedTopic={this.queries[query].caption}
@@ -139,6 +180,7 @@ class App extends React.Component {
 
         return (
             <div
+                key={postId}
                 className={`fb-post ${watchlist[p.fb_page]}`}
                 data-href={`https://www.facebook.com/${pageId}/posts/${postId}/`}
                 data-width={width}
@@ -148,13 +190,14 @@ class App extends React.Component {
     }
 
     renderPosts() {
-        const { skip, matches: posts } = this.state;
+        const { parties, skip, matches: posts } = this.state;
 
         if (posts == null || posts.length === 0) {
             return null;
         }
 
         const visiblePosts = flow(
+            filter(p => parties[watchlist[p.fb_page]]),
             sortBy(p => -new Date(p.created_at)),
             drop(skip),
             take(PAGE_SIZE)
@@ -301,13 +344,8 @@ class App extends React.Component {
         this.executeQuery(this.state.query);
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        if (
-            window.FB &&
-            ((prevState.matches.length === 0 &&
-                this.state.matches.length > 0) ||
-                prevState.skip !== this.state.skip)
-        ) {
+    componentDidUpdate() {
+        if (window.FB) {
             window.FB.XFBML.parse();
         }
     }

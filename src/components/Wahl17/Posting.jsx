@@ -22,12 +22,15 @@ class Posting extends React.Component {
                 $(iframe).replaceWith(
                     `<div class="inline-facebook">
                          <div
-                             class="fb-video"
+                             class="fb-video hide-lt-lg"
                              data-href="${query.href}"
                              data-width="auto"
                              data-show-text="true"
                          />
-                     </div>`
+                         <div class="desktop-only-warning show-lt-lg">
+                             Dieser Inhalt ist nur in der Desktop Variante verfügbar.
+                         </div>
+                    </div>`
                 );
             }
         });
@@ -151,7 +154,7 @@ class Posting extends React.Component {
                   <img
                       className="width-100 block posting__image"
                       src={image.file.url + '?w=640'}
-                      alt={image.title}
+                      alt={image.description}
                   />
                   {this.renderParties()}
               </div>

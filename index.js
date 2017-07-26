@@ -81,7 +81,10 @@ const builder = mm2000
                     tagsTree[url] = {
                         url,
                         type: 'Wahl17',
-                        props: { posts: postsByTag[tag], selectedTopic: tag }
+                        props: {
+                            posts: postsByTag[tag],
+                            selectedTopic: _.invert(partyToClass)[tag] || tag
+                        }
                     };
                 });
 
