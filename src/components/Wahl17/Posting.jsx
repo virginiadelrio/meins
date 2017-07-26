@@ -229,7 +229,7 @@ class Posting extends React.Component {
 
         const textComponent = text
             ? <div
-                  className="posting__text show-lt-lg"
+                  className="posting__text show-lt-md"
                   dangerouslySetInnerHTML={{
                       __html: this.renderMarkdown(text)
                   }}

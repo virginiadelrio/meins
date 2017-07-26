@@ -71,6 +71,7 @@ b, strong {
 
     &__first-paragraph, &__text {
         padding: 0 2rem;
+        line-height: 1.5rem;
         
         text-align: left;
     }
@@ -149,13 +150,14 @@ b, strong {
     padding: 1rem;
     max-width: 40rem;
     
-    font-family: 'GothamMedium', sans-serif;
     color: #666;
-    font-size: 2rem;
+    font-family: 'GothamMedium', sans-serif;
+    font-size: 1.5rem;
 
     @media @screenLg {
         padding: 1rem 0;
         max-width: 80rem - 4rem;
+        font-size: 2rem;
     }
 
     &.is-active {
@@ -170,17 +172,25 @@ b, strong {
         font-size: 1rem;
     }
 
+    &__title {
+        margin-right: 1rem;
+    }
+
     &__items {
         display: none;
         z-index: 10;
+        cursor: pointer;
         
         top: 2rem;
-        left: 0;
-        width: 100%;
-        padding: 0 0 2rem;
+        right: .5rem;
+        padding: .5rem 2rem;
 
         background: white;
         border-bottom: 5px solid currentColor;
+        
+        @media @screenLg {
+            padding: 2rem;
+        }
     }
 
     &__item {

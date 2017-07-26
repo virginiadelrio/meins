@@ -13,7 +13,7 @@ class TopicMenu extends React.Component {
         const { items, selectedTopic, onClick } = this.props;
 
         const outerClassname = classnames(
-            'flex space-between align-end relative topic-menu',
+            'flex justify-end align-center relative topic-menu',
             {
                 'is-active': this.state.active
             }
@@ -26,7 +26,7 @@ class TopicMenu extends React.Component {
         return (
             <div className={outerClassname}>
                 <div style={{ width: '2rem' /* FIXME too hacky */ }} />
-                <div className="text-center topic-menu__title">
+                <div className="topic-menu__title">
                     {selectedTopic}
                 </div>
                 <div
@@ -51,10 +51,10 @@ class TopicMenu extends React.Component {
                         return (
                             <li
                                 key={item.text}
-                                className="text-center topic-menu__item"
+                                className="text-right topic-menu__item"
                             >
                                 <a
-                                    className="reset-link topic-menu__link"
+                                    className="block reset-link topic-menu__link"
                                     href={item.href}
                                     onClick={clickHandler}
                                 >
