@@ -78,7 +78,6 @@ module.exports = ({ url }) => {
                         <span className="wahl-logo__wahl">Wahl</span>
                         <span className="wahl-logo__17">17</span>
                     </a>
-                    <div style={{ width: '6rem' }} />
                 </header>
                 <div id="fb-root" />
 
