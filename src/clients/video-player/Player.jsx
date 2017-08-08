@@ -455,11 +455,11 @@ const styles = {
         '&:hover $volumeTrack': {
             backgroundColor: 'rgba(0, 0, 0, .5)',
             display: 'block'
-        },
-
-        '$small &': {
-            display: 'none'
         }
+        /* */
+        /* '$small &': {*/
+        /* display: 'none'*/
+        /* }*/
     },
     volumeTrack: {
         display: 'none',
@@ -472,7 +472,11 @@ const styles = {
         paddingRight: '15px',
 
         transform: 'rotate(270deg)',
-        transformOrigin: 'top left'
+        transformOrigin: 'top left',
+
+        '$small &': {
+            left: '-10px'
+        }
     },
     volumeRange: {
         height: '50px',
